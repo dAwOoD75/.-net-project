@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Bus Ticketing System</title>
+    <link rel="stylesheet" href="StyleSheet1.css">
+</head>
+<body>
+
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq-item">
+            <h3>1. How can I book a ticket?</h3>
+            <p>Simply enter your starting location, destination, and travel date, then select a bus and proceed to payment.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. Is there a limit on the number of tickets I can book?</h3>
+            <p>No, you can book multiple tickets, but ensure the seats are available for the chosen bus and date.<p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. What payment methods are accepted?</h3>
+            <p>We accept various payment methods, including credit/debit cards, mobile wallets, and online banking.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. Can I cancel my ticket after booking?</h3>
+            <p>Yes, you can cancel your ticket. Refund policies may apply, depending on the time of cancellation.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. How can I check the status of my booking?</h3>
+            <p>You can view your booking status by logging into your account and visiting the "My Bookings" section.</p>
+        </div>
+        <div class="faq-item">
+            <h3>6. How do I modify my booking?</h3>
+            <p>You can modify your booking details through the "My Bookings" section in your account before the travel date.</p>
+        </div>
+
+
+    </div>
+        <!--<script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const faqItems = document.querySelectorAll(".faq-item");
+
+                faqItems.forEach((item, index) => {
+                    const question = item.querySelector("h3");
+                    question.innerHTML = `${index + 1}. ${question.textContent}`;
+                });
+
+                // Add search functionality
+                const searchInput = document.createElement("input");
+                searchInput.setAttribute("type", "text");
+                searchInput.setAttribute("id", "faq-search");
+                searchInput.setAttribute("placeholder", "Search FAQs...");
+                document.querySelector(".faq-container").prepend(searchInput);
+
+                searchInput.addEventListener("keyup", function () {
+                    const query = this.value.toLowerCase();
+                    faqItems.forEach((item) => {
+                        const question = item.querySelector("h3").textContent.toLowerCase();
+                        if (question.includes(query)) {
+                            item.style.display = "block";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
+            });
+        </script>-->
+
+</body>
+</html>
