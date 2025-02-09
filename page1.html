@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fare Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('bus.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background-color: rgba(0, 123, 255, 0.9);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    header span {
+      color: #FFD700;
+      font-style: italic;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      margin: 50px auto;
+    }
+
+    label {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    select, input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>Dawood <span>Travellers</span></header>
+  <div class="container">
+    <h1>Fare Details</h1>
+    <form action="page2.html" method="GET">
+      <label for="fromCity">From:</label>
+      <select id="fromCity" name="fromCity" required>
+        <option value="">Select City</option>
+        <option value="jhang">Jhang</option>
+        <option value="faisalabad">Faisalabad</option>
+        <option value="lahore">Lahore</option>
+        <option value="islamabad">Islamabad</option>
+        <option value="peshawar">Peshawar</option>
+        <option value="sialkot">Sialkot</option>
+      </select>
+
+      <label for="toCity">To:</label>
+      <select id="toCity" name="toCity" required>
+        <option value="">Select City</option>
+        <option value="jhang">Jhang</option>
+        <option value="faisalabad">Faisalabad</option>
+        <option value="lahore">Lahore</option>
+        <option value="islamabad">Islamabad</option>
+        <option value="peshawar">Peshawar</option>
+        <option value="sialkot">Sialkot</option>
+      </select>
+
+      <label for="travelDate">Travel Date:</label>
+      <input type="date" id="travelDate" name="travelDate" required>
+
+      <button onclick="href='page2.html'">Next</button>
+
+    </form>
+  </div>
+</body>
+</html>
+
+
