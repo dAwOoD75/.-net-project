@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seat Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('bus.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background-color: rgba(0, 123, 255, 0.9);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    header span {
+      color: #FFD700;
+      font-style: italic;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      margin: 50px auto;
+    }
+
+    .bus-layout {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .seat {
+      width: 50px;
+      height: 50px;
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .seat.selected {
+      background-color: #28a745;
+    }
+
+    .seat.unavailable {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>Dawood <span>Travellers</span></header>
+  <div class="container">
+    <h1>Select Your Seats</h1>
+    <div class="bus-layout" id="busLayout">
+      
+    </div>
+    <p><strong>Selected Seats:</strong> <span id="selectedSeats">None</span></p>
+    <p><strong>Total Fare:</strong> Rs. <span id="totalFare">0</span></p>
+    <button class="button" onclick="proceedToConfirmation()">Next</button>
+  </div>
+
+  <script>
+    const seatCount = 40;
+    const farePerSeat = 500; 
+    const busLayout = document.getElementById('busLayout');
+    const selectedSeatsSpan = document.getElementById('selectedSeats');
+    const totalFareSpan = document.getElementById('totalFare');
+
+    let selectedSeats = [];
+
+    function createSeats() {
+      for (let i = 1; i <= seatCount; i++) {
+        const seat = document.createElement('div');
+        seat.classList.add('seat');
+        seat.textContent = i;
+        seat.addEventListener('click', () => toggleSeatSelection(i, seat));
+        busLayout.appendChild(seat);
+      }
+    }
+
+    function toggleSeatSelection(seatNumber, seatElement) {
+      if (seatElement.classList.contains('unavailable')) return;
+
+      if (seatElement.classList.contains('selected')) {
+        seatElement.classList.remove('selected');
+        selectedSeats = selectedSeats.filter(seat => seat !== seatNumber);
+      } else {
+        seatElement.classList.add('selected');
+        selectedSeats.push(seatNumber);
+      }
+
+      updateSelectionDetails();
+    }
+
+    function updateSelectionDetails() {
+      selectedSeatsSpan.textContent = selectedSeats.join(', ') || 'None';
+      totalFareSpan.textContent = selectedSeats.length * farePerSeat;
+    }
+
+    function proceedToConfirmation() {
+      if (selectedSeats.length === 0) {
+        alert('Please select at least one seat.');
+        return;
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromCity = urlParams.get('fromCity');
+      const toCity = urlParams.get('toCity');
+      const travelDate = urlParams.get('travelDate');
+
+      const queryParams = new URLSearchParams({
+        fromCity,
+        toCity,
+        travelDate,
+        seats: selectedSeats.join(', '),
+        fare: selectedSeats.length * farePerSeat
+      }).toString();
+
+      window.location.href = `page3.html?${queryParams}`;
+    }
+
+    createSeats();
+  </script>
+</body>
+</html>
+
+
