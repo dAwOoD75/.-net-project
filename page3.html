@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('bus.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background-color: rgba(0, 123, 255, 0.9);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    header span {
+      color: #FFD700;
+      font-style: italic;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      margin: 50px auto;
+    }
+
+    .details {
+      text-align: left;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .details p {
+      margin: 10px 0;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>Dawood <span>Travellers</span></header>
+  <div class="container">
+    <h1>Booking Confirmation</h1>
+    <div class="details">
+      <p><strong>From:</strong> <span id="fromCity"></span></p>
+      <p><strong>To:</strong> <span id="toCity"></span></p>
+      <p><strong>Travel Date:</strong> <span id="travelDate"></span></p>
+      <p><strong>Selected Seats:</strong> <span id="selectedSeats"></span></p>
+      <p><strong>Total Fare:</strong> Rs. <span id="totalFare"></span></p>
+    </div>
+    <button class="button" onclick="confirmPayment()">Confirm Payment</button>
+  </div>
+
+  <script>
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromCity = urlParams.get('fromCity');
+    const toCity = urlParams.get('toCity');
+    const travelDate = urlParams.get('travelDate');
+    const selectedSeats = urlParams.get('seats');
+    const totalFare = urlParams.get('fare');
+
+    
+    document.getElementById('fromCity').textContent = fromCity;
+    document.getElementById('toCity').textContent = toCity;
+    document.getElementById('travelDate').textContent = travelDate;
+    document.getElementById('selectedSeats').textContent = selectedSeats || 'None';
+    document.getElementById('totalFare').textContent = totalFare || '0';
+
+    function confirmPayment() {
+      alert('Payment Confirmed! Thank you for booking with Dawood Travellers.');
+      window.location.href = 'page4.html';
+    }
+  </script>
+</body>
+</html>
+
+
